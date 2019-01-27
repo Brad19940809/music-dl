@@ -7,16 +7,16 @@
 
 """
 
-import sys
 import importlib
+import sys
 import threading
 import traceback
+
 import glovar
-from core import extractors
 from core.common import music_list_merge
 from core.exceptions import *
-from utils import echo
 from utils import cli
+from utils import echo
 from utils.customlog import CustomLog
 
 logger = CustomLog(__name__).getLogger()

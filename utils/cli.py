@@ -1,5 +1,5 @@
 #!/usr/bin/env python  
-#-*- coding:utf-8 _*-  
+# -*- coding:utf-8 _*-
 """
 @author: HJK 
 @file: cli.py 
@@ -8,14 +8,16 @@
 负责用户交互
 
 """
+import getopt
 import re
 import sys
-import getopt
+
 import glovar
 from utils import echo
 from utils.customlog import CustomLog
 
 logger = CustomLog(__name__).getLogger()
+
 
 def set_opts(args):
     '''
@@ -25,8 +27,8 @@ def set_opts(args):
     '''
     try:
         opts, others = getopt.getopt(args, 'vhmk:s:c:o:x:',
-                                        ['verbose', 'help', 'merge', 'nomerge',
-                                         'keyword=', 'source=', 'count=', 'outdir=', 'proxy='])
+                                     ['verbose', 'help', 'merge', 'nomerge',
+                                      'keyword=', 'source=', 'count=', 'outdir=', 'proxy='])
     except getopt.GetoptError as e:
         logger.error('命令解析失败')
         logger.error(e)
@@ -49,7 +51,7 @@ def set_opts(args):
         elif o in ('-o', '--outdir'):
             glovar.set_option('outdir', a)
         elif o in ('-x', '--proxy'):
-            proxies = { 'http': a, 'https': a}
+            proxies = {'http': a, 'https': a}
             glovar.set_option('proxies', proxies)
         elif o in ('-m', '--merge'):
             glovar.set_option('merge', True)
@@ -73,7 +75,7 @@ def get_music_select(comment='请输入下载序号，多个序号用空格隔�
     for choice in choices.split():
         start, _, end = choice.partition('-')
         if end:
-            selected += range(int(start), int(end)+1)
+            selected += range(int(start), int(end) + 1)
         else:
             selected.append(start)
 
@@ -83,4 +85,3 @@ def get_music_select(comment='请输入下载序号，多个序号用空格隔�
 def set_music_keyword(comment='请输入要搜索的歌曲，或Ctrl+C退出：\n > '):
     keyword = input(comment)
     glovar.set_option('keyword', keyword)
-

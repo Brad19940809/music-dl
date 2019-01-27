@@ -1,5 +1,5 @@
 #!/usr/bin/env python  
-#-*- coding:utf-8 -*-  
+# -*- coding:utf-8 -*-
 """
 @author: HJK 
 @file: baidu.py 
@@ -10,12 +10,13 @@
 """
 
 import datetime
-import glovar
+
 from core.common import *
 from core.exceptions import *
 from utils.customlog import CustomLog
 
 logger = CustomLog(__name__).getLogger()
+
 
 def baidu_search(keyword) -> list:
     ''' 搜索音乐 '''
@@ -72,6 +73,7 @@ def baidu_search(keyword) -> list:
 def baidu_download(music):
     ''' 从百度音乐下载音乐 '''
     music_download(music)
+
 
 search = baidu_search
 download = baidu_download
